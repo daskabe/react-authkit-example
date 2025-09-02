@@ -3,15 +3,8 @@ import { useAuth } from "@workos-inc/authkit-react";
 import { Link } from "react-router-dom";
 import { SignInButton } from "../components/sign-in-button";
 
-
 export default function Index() {
-  const { user, isLoading, getAccessToken } = useAuth();
-  // console.log('whole object', useAuth())
-  const fetchAccessToken = async () => {
-    const token = await getAccessToken();
-    console.log('Access Token:', token);
-  }
-
+  const { user, isLoading } = useAuth();
 
   if (isLoading) {
     return "..."
@@ -32,12 +25,6 @@ export default function Index() {
               <Link to="/account">View account</Link>
             </Button>
             <SignInButton large />
-            <Button asChild size="3" variant="soft" onClick={fetchAccessToken}>
-              <h1>Fetch Token</h1>
-            </Button>
-            <Button asChild size="3" variant="soft" onClick={fetchAccessToken}>
-              <h1>Fetch Token</h1>
-            </Button>
           </Flex>
         </>
       ) : (
